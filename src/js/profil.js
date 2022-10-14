@@ -60,3 +60,13 @@ if (localStorage.getItem("user") === null) {
     let esss = await choiseWord(content);
   }
 }
+
+let logout = document.querySelector(".logout");
+logout.addEventListener('click', (e)=>{
+  e.preventDefault();
+  localStorage.removeItem("user");
+  if (localStorage.getItem("user") === null) {
+  document.location.href = "/src/views/signin.html";
+  }
+})
+ document.querySelector(".userAvatar").innerHTML = getUserStorage().user[0].email

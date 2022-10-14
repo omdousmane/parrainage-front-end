@@ -1,4 +1,6 @@
 // getUser
+import {  removeUser, getUserStorage} from "./storage.js";
+
 async function getUser(token) {
   let contentReq = fetch(
     "https://hetic-godson.herokuapp.com/api/v1/readAllUsers",
@@ -88,5 +90,10 @@ async function choiseWord(contents) {
     });
   });
 }
+ function logout(id) {
+  let user = getUserStorage();
+  removeUser(user.id)
+ }
+
 // exports
-export { postUser, loginUser, getUser, printHtml, checkForm, choiseWord };
+export { postUser, loginUser, getUser, printHtml, checkForm, choiseWord , logout};

@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url("table.css");
+@import url("alert.css");
 
 * {
   margin: 0;
