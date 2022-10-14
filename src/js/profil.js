@@ -11,11 +11,12 @@ if (localStorage.getItem("user") === null) {
 
   // console.log(localContent.user[0].email);
   console.log(localContent);
-  let localMail;
-  if (localContent.user.email !== "undefined") {
-    localMail = localContent.user[0].email;
+
+  let localMail = "";
+  if (localContent.email) {
+    localMail = localContent.email;
   } else {
-    localMail = localContent.user.email;
+    localMail = localContent.user[0].email;
   }
 
   // let localMail = localContent.user[0].email;
@@ -32,28 +33,30 @@ if (localStorage.getItem("user") === null) {
       const elt = users.user[i];
       found = users.user.filter((element) => element.quote !== elt.quote);
     }
-    let content = found.find((element) => element.email === localMail);
+    console.log(found);
+    let contents = users.user.find((element) => element.email === localMail);
+    console.log(contents.quote);
+    console.log(contents);
 
     console.log(localMail);
     console.log(found);
-    console.log(content);
     console.log(localMail);
-    found.forEach((element) => {
-      if (element.email === localMail) {
-        if (element.quote !== null) {
-          document.querySelector(".table-word").style.display = "none";
-        }
-      }
-    });
     found
       .map(function (user) {
-        if (user !== null) {
+        if (user) {
           let tbody = document.querySelector(".tbody");
           tbody.innerHTML += tableHtml(user.quote);
         }
       })
       .join("");
-    content = document.querySelectorAll(".content");
+    if (
+      contents.quote !== null &&
+      contents.quote !== "undefined" &&
+      contents.quote !== ""
+    ) {
+      document.querySelector(".table-word").style.display = "none";
+    }
+    let content = document.querySelectorAll(".content");
     let esss = await choiseWord(content);
   }
 }
