@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/signin.css">
+    <title>sign in</title>
+</head>
+
+<body>
+    <header>
+        <a href="#home" class="logo">
+            <img src="/src/assets/img/logo_nom_-_noir.png" alt="nebula" srcset="">
+        </a>
+    </header>
+
+    <main>
+        <div class="alert"></div>
+    </main>
+
+    <form id="form" enctype="multipart/form-data">
+        <div class="container">
+            <h1>Connexion</h1>
+            <hr>
+
+            <!-- email -->
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Entre ton e-mail" name="email" id="email" required>
+            <p id="message-erreur"></p>
+
+            <!-- password -->
+            <label for="password"><b>Password</b></label>
+            <input type="password" id="password" name="password" placeholder="Entre ton mot de passe"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                required>
+            <p id="message-erreur"></p>
+            <hr>
+            <button type="submit" class="registerbtn">Se connecter</button>
+        </div>
+        <div class="container signin">
+            <p>Vous n'avez pas encore de compte ? <a href="/index.html">S'enregistrer</a>.</p>
+        </div>
+    </form>
+    <script type="module" src="../../app.js"></script>
+    <script type="module" src="../js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../css/login.css">
+<title>Mail</title>
+</head>
+
+<body>
+  <form action="">
+    <div class="wrapper">
+      <a href="#default" class="logo">
+        <img src="../assets/img/logo_nom_-_noir.png" alt="nebula" srcset="">
+      </a>
+      <div class="container">
+        <form action="">
+          <div class="row">
+            <label for="mail">Adresse mail HETIC</label>
+            <input type="text" id="mail" name="mail" placeholder="Adresse mail Hetic...">
+          </div>
+          <div class="row">
+            <input type="submit" value="OK">
+          </div>
+        </form>
+      </div>
+
+      <div id="message">
+        <h3>Password must contain the following:</h3>
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+      </div>
+    </div>
+  </form>
+</body>
+<script src="../js/login.js"></script>
+
+</html>

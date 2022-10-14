@@ -1,0 +1,481 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  box-sizing: content-box;
+}
+:root {
+  --primary: #333;
+  --secondary: #333;
+  --errorColor: red;
+  --stepNumber: 6;
+  --containerWidth: 800px;
+  --bgColor: #333;
+  --inputBorderColor: lightgray;
+}
+
+@font-face {
+  font-family: "Good_Times";
+  src: url("../assets/font/good_times/good\ times\ rg.otf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/font/montserrat.regular.ttf");
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #333;
+}
+h1 {
+  font-family: Good_Times;
+  padding-bottom: 50px;
+}
+
+::selection {
+  color: #fff;
+  background: var(--primary);
+}
+.container {
+  width: var(--containerWidth);
+  background: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 50px 35px 10px 35px;
+}
+.container header {
+  font-size: 35px;
+  font-weight: 600;
+  margin: 0 0 30px 0;
+}
+.container .form-outer {
+  width: 100%;
+  overflow: hidden;
+}
+.container .form-outer form {
+  display: flex;
+  width: calc(100% * var(--stepNumber));
+  /* margin-left: -5px; */
+}
+
+.form-outer {
+  width: 100vw;
+}
+
+.page {
+  width: 90vw;
+}
+
+.slide-page {
+  width: 100vw;
+}
+.form-outer form .page {
+  height: 100vh;
+  width: calc(100% / var(--stepNumber));
+  transition: margin-left 0.3s ease-in-out;
+  border: 1px solid red;
+  padding: 10px;
+}
+.form-outer form .page .title {
+  text-align: left;
+  font-size: 25px;
+  font-weight: 500;
+}
+.form-outer form .page .field {
+  width: var(--containerWidth);
+  /* height: 45px; */
+  margin: 45px 0;
+  display: flex;
+  position: relative;
+}
+form .page .field .label {
+  position: absolute;
+  top: -30px;
+  font-weight: 500;
+}
+form .page .field input {
+  box-sizing: border-box;
+  height: 100%;
+  width: 98%;
+  border: 1px solid var(--inputBorderColor);
+  border-radius: 5px;
+  padding-left: 15px;
+  margin: 0 1px;
+  font-size: 18px;
+  transition: border-color 150ms ease;
+}
+
+/* form .page .field .section {
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--inputBorderColor);
+  border-radius: 5px;
+  padding-left: 15px;
+  margin: 0 1px;
+  font-size: 18px;
+  transition: border-color 150ms ease;
+} */
+
+form .page .field input.invalid-input {
+  border-color: var(--errorColor);
+  color: var(--errorColor);
+}
+form .page .field select {
+  width: 100%;
+  padding-left: 10px;
+  font-size: 17px;
+  font-weight: 500;
+}
+form .page .field button {
+  width: 98%;
+  height: calc(100% + 5px);
+  border: none;
+  background: var(--secondary);
+  margin-top: -20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: 0.5s ease;
+  padding-block: 10px;
+}
+form .page .field button:hover {
+  background: #000;
+}
+form .page .btns button {
+  margin-top: -20px !important;
+}
+form .page .btns {
+  display: flex;
+  justify-content: center;
+}
+form .page .btns button.prev {
+  margin-right: 3px;
+  font-size: 17px;
+}
+
+.radio-input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.radio-label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.3rem;
+  height: 1.625rem;
+  line-height: 1.625rem;
+  margin-right: 1rem;
+  position: relative;
+  vertical-align: top;
+}
+
+.radio-label:before {
+  background-color: #eee;
+  border: 0.1rem solid #aaa;
+  border-radius: 0.8rem;
+  content: "";
+  display: inline-block;
+  height: 1.6rem;
+  margin-right: 0.4rem;
+  width: 1.6rem;
+  vertical-align: top;
+}
+
+input[type="radio"]:checked + label:after {
+  background: #888;
+  border-radius: 0.5rem;
+  content: "";
+  height: 1rem;
+  left: 0.3rem;
+  position: absolute;
+  top: 0.3rem;
+  width: 1rem;
+}
+
+form .page .btns button.next {
+  margin-left: 3px;
+}
+.container .progress-bar {
+  display: flex;
+  margin: 40px 0;
+  user-select: none;
+}
+.container .progress-bar .step {
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+.container .progress-bar .step p {
+  font-weight: 500;
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 8px;
+}
+.progress-bar .step .bullet {
+  height: 25px;
+  width: 25px;
+  border: 2px solid #000;
+  display: inline-block;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.2s;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+}
+.progress-bar .step .bullet.active {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+.progress-bar .step .bullet span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.progress-bar .step .bullet.active span {
+  display: none;
+}
+.progress-bar .step .bullet:before,
+.progress-bar .step .bullet:after {
+  position: absolute;
+  content: "";
+  bottom: 11px;
+  right: -100px;
+  height: 3px;
+  width: 80px;
+  background: #262626;
+}
+.progress-bar .step .bullet.active:after {
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: animate 0.3s linear forwards;
+}
+@keyframes animate {
+  100% {
+    transform: scaleX(1);
+  }
+}
+.progress-bar .step:last-child .bullet:before,
+.progress-bar .step:last-child .bullet:after {
+  display: none;
+}
+.progress-bar .step p.active {
+  color: var(--primary);
+  transition: 0.2s linear;
+}
+.progress-bar .step .check {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  font-size: 15px;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+.progress-bar .step .check.active {
+  display: block;
+  color: #fff;
+}
+
+
+@media screen and (max-width: 660px) {
+  :root {
+    --containerWidth: 400px;
+  }
+  .progress-bar .step p {
+    display: none;
+  }
+  .progress-bar .step .bullet::after,
+  .progress-bar .step .bullet::before {
+    display: none;
+  }
+  .progress-bar .step .bullet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .progress-bar .step .check {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  .step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 490px) {
+  :root {
+    --containerWidth: 100%;
+  }
+  .container {
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+}
+
+/* body,
+select,
+input {
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0em 1em;
+} */
+
+a,
+a:visited {
+  font-weight: bold;
+  color: #9a3324;
+  text-decoration: none;
+}
+
+table {
+  margin: 0 auto;
+}
+
+td,
+th {
+  padding: 1em 3em 1em 1em;
+  vertical-align: bottom;
+}
+
+table td:nth-child(1) {
+  padding-right: 0em;
+}
+
+table th:nth-child(5),
+table th:nth-child(6) {
+  max-width: 6em;
+}
+
+tr td {
+  border-bottom: 1px solid #dadada;
+}
+
+tr td:nth-child(7),
+tr th:nth-child(7) {
+  display: none;
+}
+
+tbody tr:hover {
+  background: #f5f5f5;
+}
+
+tr th {
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid #989c97;
+}
+
+.filters {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  max-width: 950px;
+}
+
+label {
+  color: #555555;
+}
+
+select,
+input {
+  padding: 0.3em;
+  border: 1px solid #e5e5e5;
+}
+
+select {
+  border-radius: 10px;
+}
+
+select:hover,
+input:hover {
+  border: 1px solid #e5e5e5;
+}
+
+.btn-cta,
+.btn-cta:hover {
+  text-align: center;
+  cursor: pointer;
+  color: black;
+  border-radius: 3px;
+  background: #ffcb05;
+  padding: 0.3em;
+  letter-spacing: 0.2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-cta:hover {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.01);
+  color: black;
+}
+
+
+/* 
+@media screen and (max-width: 1150px) {
+  tr td:nth-child(3),
+  tr th:nth-child(3),
+  tr td:nth-child(5),
+  tr th:nth-child(5),
+  tr td:nth-child(6),
+  tr th:nth-child(6) {
+    display: none;
+  }
+
+  td,
+  th {
+    padding: 1em 0em 1em 1em;
+  }
+
+  .filters {
+    flex-flow: row wrap;
+    flex-flow: column;
+    align-content: center;
+  }
+
+  .filters > * {
+    padding: 0.5em;
+  }
+
+  input,
+  select {
+    width: 100%;
+  }
+
+  .btn-cta {
+    display: block;
+    max-width: 5em;
+
+    margin: 0 auto;
+    margin-top: 1em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  th,
+  td {
+    max-width: 100px;
+  }
+} */

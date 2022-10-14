@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Good_Times";
+  src: url("../assets/font/good_times/good\ times\ rg.otf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/font/montserrat.regular.ttf");
+}
+
+html {
+  font-family: Montserrat;
+  font-size: 14px;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+}
+
+.description {
+  text-align: center;
+}
+
+h1 {
+  font-family: Good_times;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+  background-color: #04aa6d;
+  color: white;
+  font-size: 16px;
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.logo img {
+  height: 50px;
+}
+/* The message box is shown when the user clicks on the password field */
+#message {
+  display: none;
+  background: red;
+  color: #000;
+  position: relative;
+  padding: 5px 20px;
+  border-radius: 4px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+#message p {
+  padding: 2px 35px;
+  font-size: 14px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+
+@media (min-width: 570px) {
+  .container {
+    width: 500px;
+  }
+}

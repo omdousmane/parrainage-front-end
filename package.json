@@ -1,0 +1,23 @@
+{
+  "name": "parrainage-front",
+  "version": "1.0.0",
+  "description": "Godson site",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CamilleMrntz/Parrainage-front.git"
+  },
+  "author": "PMD",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CamilleMrntz/Parrainage-front/issues"
+  },
+  "homepage": "https://github.com/CamilleMrntz/Parrainage-front#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
