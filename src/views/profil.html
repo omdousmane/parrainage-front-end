@@ -13,8 +13,15 @@
   <header>
     <img class="logo_nebula" src="../assets/img/logo_nom_-_noir.png" alt="Logo BDE">
     <div>
-      <p class="userAvatard">Bonjour Sarah !</p>
-      <div class="avatar"></div>
+      <p class="userAvatar">Bonjour</p>
+      <div class="dropdown">
+        <button class="dropbtn">
+          <img src="/src/assets/img/turn_off.png" alt="logo déconnexion">
+        </button>
+        <div class="dropdown-content">
+          <a href="#" class="logout">Déconnexion</a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -22,18 +29,21 @@
   <main>
     <section class="dashboard">
       <div class="dashboard_case discord">
-        <img src="../assets/img/unknown.png" alt="logo discord">
-        <a href="https://discord.gg/MArBym5a%22%3ERejoins" le discord.</a>
+        <img class="logo" src="../assets/img/unknown.png" alt="logo discord">
+        <a href="https://discord.gg/MArBym5a">Rejoins le discord.</a>
       </div>
 
-      <div class=" dashboard_case tree">
-        <img src="../assets/img/arbre-blanc.png" alt="">
-        <a href="#tree">Voir mon arbre.</a>
+      <div class="dashboard_case tree">
+        <img class="logo" src="../assets/img/arbre-blanc.png" alt="arbre">
+        <div>
+          <a href="#tree">Voir mon arbre.</a>
+          <p>- Bientot disponible -</p>
+        </div>
       </div>
 
       <div class="dashboard_case info">
-        <img src="../assets/img/cog.png" alt="">
-        <a href="">Modifier mes informations.</a>
+        <img class="logo" src="../assets/img/cog.png" alt="paramètres">
+        <a href="update.html">Modifier mes informations.</a>
       </div>
     </section>
     <section class="table-word">
@@ -42,7 +52,7 @@
         <thead>
           <tr>
             <th>
-              <div class="h1">Phrase</div>
+              <div class="h1">Phrases</div>
 
             </th>
             <th>
@@ -55,7 +65,29 @@
         </tbody>
       </table>
     </section>
+    <section class="dashboard">
+      <!-- <div class="dashboard_case little_cases"> -->
+      <div class="dashboard_case ext">
+        <a href="https://hetic-planning.oxymis.fr/hp/" target="_blank">Extranet</a>
+      </div>
+      <div class="dashboard_case ext">
+        <a href="https://learn.hetic.net/?new_loc=%2Fultra%2Fcourse" target="_blank">Blackboard</a>
+      </div>
+      <!-- </div> -->
+      <div class="dashboard_case ext bde">
+        <a class="" href="#bde">Site du BDE</a>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <p>© Copyright 2022</p>
+    <a href="https://www.instagram.com/nebulabde/">
+      <img class="instagram" src="/src/assets/img/instagram-icon.png" alt="logo instagram">
+      <p>Instagram du BDE</p>
+    </a>
+  </footer>
+
   <script type="module" src="../../app.js"></script>
   <script type="module" src="../js/profil.js"></script>
 </body>

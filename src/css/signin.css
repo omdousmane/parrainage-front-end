@@ -74,6 +74,7 @@ hr {
 
 /* Set a style for the submit button */
 .registerbtn {
+  font-family: Montserrat;
   background-color: #04aa6d;
   color: white;
   padding: 16px 20px;
@@ -123,4 +124,26 @@ a {
   position: relative;
   left: -35px;
   content: "✖";
+}
+
+/* Return button for the update.html page */
+.cancel_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel {
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 15px 50px;
+  margin-block: 10px;
+  background-color: #04aa6d;
+  opacity: 0.9;
+  color: white;
+}
+
+.return:hover {
+  opacity: 1;
 }

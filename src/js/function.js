@@ -4,6 +4,8 @@ let curPage = 1;
 let pageSize = 4;
 
 // getUser
+import {  removeUser, getUserStorage} from "./storage.js";
+
 async function getUser(token) {
   let contentReq = await fetch(
     "https://hetic-godson.herokuapp.com/api/v1/readAllUsers",
@@ -93,6 +95,11 @@ async function choiseWord(contents) {
     });
   });
 }
+ function logout(id) {
+  let user = getUserStorage();
+  removeUser(user.id)
+ }
+
 
 function renderTable(data, curPage, pageSize) {
   // create html

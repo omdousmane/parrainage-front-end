@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url("table.css");
+@import url("alert.css");
 
 * {
   margin: 0;
@@ -39,11 +40,8 @@ header div {
   gap: 10px;
 }
 
-.avatar {
-  width: 35px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #a581d1;
+.logout {
+  
 }
 
 h1 {
@@ -51,6 +49,7 @@ h1 {
   font-size: 24px;
   text-align: center;
   padding: 20px;
+  margin-block: 20px;
 }
 
 .dashboard {
@@ -58,6 +57,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-block: 30px;
 }
 
 .dashboard_case {
@@ -70,7 +70,7 @@ h1 {
   border-radius: 5px;
 }
 
-.dashboard_case img {
+.dashboard_case .logo {
   height: 100px;
 }
 
@@ -86,11 +86,46 @@ h1 {
 }
 
 .tree {
-  background: rgba(74, 156, 74, 0.89);
+  /* background: rgba(74, 156, 74, 0.89); */
+  background: rgb(134, 134, 134);
+  background-image: url("/src/assets/img/warning.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tree p {
+  font-size: 13px;
+  color: #fff;
 }
 
 .info {
   background: rgba(226, 130, 61, 0.921);
+}
+
+.ext {
+  background: #947dbf;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #f1f1f1;
+  padding: 30px 20px;
+  font-size: 12px;
+  margin-top: 80px;
+}
+
+footer a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.instagram {
+  height: 40px;
 }
 
 @media (min-width: 660px) {
@@ -104,11 +139,15 @@ h1 {
 }
 
 @media (min-width: 900px) {
-  .dashboard_case img {
+  .dashboard_case .logo {
     height: 150px;
   }
 
   .dashboard_case a {
     font-size: 22px;
+  }
+
+  .tree p {
+    font-size: 15px;
   }
 }
