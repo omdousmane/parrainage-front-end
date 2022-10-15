@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/profil.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <title>Admin page</title>
+</head>
+
+<body>
+  <header>
+    <img class="logo_nebula" src="../assets/img/logo_nom_-_noir.png" alt="Logo BDE">
+    <div>
+      <p class="userAvatard">Bonjour Sarah !</p>
+      <div class="avatar"></div>
+    </div>
+  </header>
+
+  <h1>Tableau de bord</h1>
+  <main>
+    <section class="dashboard">
+
+    </section>
+    <section class="table-word">
+      <table class="catTable">
+        <thead>
+          <tr>
+            <th data-sort="name">Nom</th>
+            <th data-sort="email">Email</th>
+            <th data-sort="training">Formation</th>
+            <th data-sort="quote">Quote</th>
+            <th data-sort="createdAt">Date de création</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr>
+            <td colspan="6"><i>Loading...</i></td>
+          </tr>
+        </tbody>
+
+      </table>
+      <button id="prevButton" class="btn">Previous</button>
+      <button id="nextButton" class="btn">Next</button>
+    </section>
+  </main>
+  <script type="module" src="../../app.js"></script>
+  <script type="module" src="../js/admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 16px;
+}
+thead tr {
+  text-align: left;
+  background-color: #04aa6d;
+  opacity: 0.9;
+  height: 60px;
+  color: #f2f2f2;
+}
+
+td,
+th {
+  padding: 5px;
+}
+
+td {
+  cursor: pointer;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+/* Set a style for the submit button */
+.btn {
+  font-size: 16px;
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}

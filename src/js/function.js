@@ -1,6 +1,11 @@
+let data, table, sortCol;
+let sortAsc = false;
+let curPage = 1;
+let pageSize = 4;
+
 // getUser
 async function getUser(token) {
-  let contentReq = fetch(
+  let contentReq = await fetch(
     "https://hetic-godson.herokuapp.com/api/v1/readAllUsers",
     {
       headers: { Autorisation: `Beare ${token}` },
@@ -88,5 +93,63 @@ async function choiseWord(contents) {
     });
   });
 }
+
+function renderTable(data, curPage, pageSize) {
+  // create html
+  let result = "";
+  data
+    .filter((row, index) => {
+      let start = (curPage - 1) * pageSize;
+      let end = curPage * pageSize;
+      if (index >= start && index < end) return true;
+    })
+    .forEach((c) => {
+      result += `<tr>
+     <td>${c.name}</td>
+     <td>${c.email}</td>
+     <td>${c.training}</td>
+     <td>${c.quote}</td>
+     <td>${c.createdAt}</td>
+     </tr>`;
+    });
+  return result;
+}
+
+function sort(data) {
+  let thisSort = e.target.dataset.sort;
+  if (sortCol === thisSort) sortAsc = !sortAsc;
+  sortCol = thisSort;
+  data.sort((a, b) => {
+    if (a[sortCol] < b[sortCol]) return sortAsc ? 1 : -1;
+    if (a[sortCol] > b[sortCol]) return sortAsc ? -1 : 1;
+    return 0;
+  });
+  return renderTable(data, curPage, pageSize);
+}
+
+function previousPage(data) {
+  console.log("diallo");
+  if (curPage > 1) curPage--;
+  console.log(data);
+  return renderTable(data, curPage, pageSize);
+}
+
+function nextPage(data) {
+  if (curPage * pageSize < data.length) curPage++;
+  console.log(curPage);
+  return renderTable(data, curPage, pageSize);
+}
+
 // exports
-export { postUser, loginUser, getUser, printHtml, checkForm, choiseWord };
+export {
+  postUser,
+  loginUser,
+  getUser,
+  printHtml,
+  checkForm,
+  renderTable,
+  previousPage,
+  nextPage,
+  sort,
+  choiseWord,
+};
