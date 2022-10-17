@@ -40,10 +40,12 @@ header div {
   gap: 10px;
 }
 
-.logout {
-  
+.table-quote {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
 }
-
 h1 {
   font-family: Good_times;
   font-size: 24px;
@@ -126,6 +128,58 @@ footer a {
 
 .instagram {
   height: 40px;
+}
+
+.quote-choise {
+  width: 80%;
+  margin: 0 auto;
+}
+/* Slideshow container */
+.quote-choise .slideshow-container {
+  position: relative;
+  padding: 20px;
+  background: #f1f1f1f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+/* Slides */
+.quote-choise .mySlides {
+  padding: 80px;
+  text-align: center;
+}
+
+.quote-choise .btnQuote {
+  border: none; /* Remove borders */
+  color: white; /* Add a text color */
+  padding: 14px 28px; /* Add some padding */
+  cursor: pointer; /* Add a pointer cursor on mouse-over */
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+/* Add a background color to the active dot/circle */
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+
+/* Add an italic font style to all quotes */
+q {
+  font-style: italic;
+}
+
+/* Add a blue color to the author */
+.author {
+  color: cornflowerblue;
 }
 
 @media (min-width: 660px) {

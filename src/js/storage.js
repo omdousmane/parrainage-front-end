@@ -1,4 +1,4 @@
-// function de recuperation des baskets
+// get user storage account
 function getUserStorage() {
   let user = localStorage.getItem("user");
   if (user == null) {
@@ -8,16 +8,26 @@ function getUserStorage() {
   }
 }
 
-// gestion du panier
+// get user storage account
+function getAdminStorage() {
+  let admin = localStorage.getItem("admin");
+  if (admin == null) {
+    return [];
+  } else {
+    return JSON.parse(admin);
+  }
+}
+
+// save user storage
 function saveUserStorage(user) {
   localStorage.setItem("user", JSON.stringify(user));
   console.log(getUserStorage());
 }
 
-// retirer un produit du panier
-function removeUser(userId) {
-  let users = getUserStorage();
-  users = users.filter((p) => p.id != userId.userId);
-  saveUserStorage(users);
+// save admin storage
+function saveAdminStorage(admin) {
+  localStorage.setItem("admin", JSON.stringify(admin));
+  console.log(getAdminStorage());
 }
-export { getUserStorage, saveUserStorage, removeUser };
+
+export { getUserStorage, saveUserStorage, saveAdminStorage, getAdminStorage };

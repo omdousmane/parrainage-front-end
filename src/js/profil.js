@@ -1,49 +1,149 @@
-import { getUserStorage, removeUser } from "./storage.js";
-import { getUser, printHtml, checkForm, choiseWord } from "./function.js";
-import { tableHtml, getRandomInt, colors } from "./html.js";
+import { getUserStorage, saveUserStorage } from "./storage.js";
+import {
+  getUser,
+  postGodson,
+  getGodson,
+  getAllGodson,
+  renderQuote,
+  quoteModal,
+  nextPage,
+  previousPage,
+  logout,
+  sort,
+  printAlert,
+} from "./function.js";
+
+import { closeBtn } from "./modal.js";
 
 if (localStorage.getItem("user") === null) {
   document.location.href = "/src/views/signin.html";
 } else {
-  let localContent = getUserStorage();
-  let localMail = "";
-  if (localContent.email) {
-    localMail = localContent.email;
-  } else {
-    localMail = localContent.user[0].email;
+  let getLocalUser = getUserStorage();
+  let getGodsons = await getGodson(getLocalUser.token);
+
+  let data, table, sortCol, selectQuotes, prompt, tablePrompt, dataGodson;
+  let sortAsc = false;
+  const pageSize = 4;
+  let curPage = 1;
+  let contentQuoteAndColorSelected = [];
+  let parentId;
+
+  window.addEventListener("DOMContentLoaded", checkQuoteChoise());
+
+  // check quote choise
+  function checkQuoteChoise() {
+    let findUser = getGodsons.godson.find(
+      (element) => element.godsonId === getLocalUser.user._id
+    );
+    if (findUser !== "undefined" && findUser) {
+      document.querySelector(".table-quote").style.display = "none";
+      let quoteSelected = document.querySelector(".quote-choise");
+      let div = document.createElement("div");
+      div.classList.add("slideshow-container");
+      let html = `
+        <h3>Phrase de parrain choisie</h3>
+        <div class="mySlides">
+          <q>${findUser.selectedQuote}</q>
+          <div class="btnQuote" style="background-color: ${findUser.color};">${findUser.color}</div>
+        </div>
+      `;
+      div.innerHTML = html;
+      quoteSelected.appendChild(div);
+    }
+    return findUser;
   }
 
-  let getLocalUser = getUserStorage();
-  let users = await getUser(getLocalUser.token);
-  if (users.user && users.user !== null) {
-    let found = [];
-    for (let i = 0; i < users.user.length; i++) {
-      const elt = users.user[i];
-      found = users.user.filter((element) => element.quote !== elt.quote);
-    }
-    let contents = users.user.find((element) => element.email === localMail);
-    found
-      .map(function (user) {
-        if (user) {
-          let tbody = document.querySelector(".tbody");
-          tbody.innerHTML += tableHtml(user.quote);
-        }
-      })
-      .join("");
-    if (contents.quote !== null && contents.quote !== "undefined") {
-      document.querySelector(".table-word").style.display = "none";
-    }
-    let content = document.querySelectorAll(".content");
-    let esss = await choiseWord(content);
+  // select quote
+  function selectQuote() {
+    selectQuotes = document.querySelectorAll("#selctQuote td");
+    selectQuotes.forEach((selctQuote) => {
+      selctQuote.addEventListener("click", (e) => {
+        let coteAndColor = e.target.getAttribute("data-coteAndColor");
+        parentId = e.target.getAttribute("data-id");
+        console.log(coteAndColor);
+        contentQuoteAndColorSelected = coteAndColor.split(":");
+
+        tablePrompt = document.querySelector(".tablePrompt");
+        tablePrompt.innerHTML = quoteModal();
+        validChoise();
+      });
+    });
+  }
+
+  // validation choise
+  function validChoise() {
+    let confirm = document.querySelector("#confirmBtn");
+    confirm.addEventListener("click", async (e) => {
+      checkQuoteChoise();
+
+      // create data object for godson
+      dataGodson = {
+        godsonId: getLocalUser.user._id,
+        parentId: parentId,
+        idFamily: 1,
+        color: contentQuoteAndColorSelected[1],
+        selectedQuote: contentQuoteAndColorSelected[0],
+      };
+      // postgodsn requete
+      data = await postGodson(dataGodson, getLocalUser.token);
+      if (data) {
+        document.querySelector(".table-quote").style.display = "none";
+        await choise(data);
+      }
+      let html = `
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>Success!</strong> ${data.message}.
+       `;
+      checkQuoteChoise();
+      await printAlert(html);
+      await closeBtn();
+    });
+  }
+
+  async function choise(data) {
+    console.log(data);
+    let quoteSelected = document.querySelector(".quote-choise");
+    let div = document.createElement("div");
+    div.classList.add("slideshow-container");
+    let html = `
+        <h3>Phrase de parrain choisie</h3>
+        <div class="mySlides">
+          <q>${data.user.selectedQuote}</q>
+          <div class="btnQuote" style="background-color: ${data.user.color};">${data.user.color}</div>
+        </div>
+      `;
+    div.innerHTML = html;
+    quoteSelected.appendChild(div);
+  }
+  // get data from database
+  data = await getUser(getLocalUser.token);
+  if (data.user && data.user !== null) {
+    let users = data.user;
+    const newDataUser = users.filter((user) => user.quote !== "");
+    table = document.querySelector(".tbody");
+    table.innerHTML = renderQuote(newDataUser, curPage, pageSize);
+    selectQuote();
+
+    // listen for sort clicks
+    let ths = document.querySelectorAll("#catTable thead tr th");
+    ths.forEach((t) => {
+      t.addEventListener("click", () => {
+        table.innerHTML = sort(newDataUser);
+      });
+    });
+
+    //  nextPage
+    document.querySelector("#nextButton").addEventListener("click", () => {
+      table.innerHTML = nextPage(newDataUser);
+      selectQuote();
+    });
+
+    //  previousPage
+    document.querySelector("#prevButton").addEventListener("click", () => {
+      table.innerHTML = previousPage(newDataUser);
+      selectQuote();
+    });
   }
 }
-
-let logout = document.querySelector(".logout");
-logout.addEventListener('click', (e)=>{
-  e.preventDefault();
-  localStorage.removeItem("user");
-  if (localStorage.getItem("user") === null) {
-  document.location.href = "/src/views/signin.html";
-  }
-})
- document.querySelector(".userAvatar").innerHTML = getUserStorage().user[0].email
+logout();
+document.querySelector(".userAvatar").innerHTML = getUserStorage().user.email;

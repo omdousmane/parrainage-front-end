@@ -14,8 +14,15 @@
   <header>
     <img class="logo_nebula" src="../assets/img/logo_nom_-_noir.png" alt="Logo BDE">
     <div>
-      <p class="userAvatard">Bonjour Sarah !</p>
-      <div class="avatar"></div>
+      <p class="userAvatar">Bonjour</p>
+      <div class="dropdown">
+        <button class="dropbtn">
+          <img src="/src/assets/img/turn_off.png" alt="logo déconnexion">
+        </button>
+        <div class="dropdown-content">
+          <a href="#" class="logout">Déconnexion</a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -35,18 +42,19 @@
             <th data-sort="createdAt">Date de création</th>
           </tr>
         </thead>
-        <tbody class="tbody">
+        <tbody class="tableBody">
           <tr>
             <td colspan="6"><i>Loading...</i></td>
           </tr>
         </tbody>
 
       </table>
-      <button id="prevButton" class="btn">Previous</button>
-      <button id="nextButton" class="btn">Next</button>
+      <div class="fild-submit">
+        <button id="prevButton" class="btn">Previous</button>
+        <button id="nextButton" class="btn">Next</button>
+      </div>
     </section>
   </main>
-  <script type="module" src="../../app.js"></script>
   <script type="module" src="../js/admin.js"></script>
 </body>
 

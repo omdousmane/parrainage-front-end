@@ -1,13 +1,13 @@
-import { getUserStorage, saveUserStorage, removeUser } from "./storage.js";
+import { getUserStorage } from "./storage.js";
 import {
   getUser,
   renderTable,
   nextPage,
   previousPage,
   sort,
+  logout,
 } from "./function.js";
 
-// window.addEventListener("load", async (e) => {
 if (localStorage.getItem("user") === null) {
   document.location.href = "/src/views/signin.html";
 } else {
@@ -20,7 +20,7 @@ if (localStorage.getItem("user") === null) {
   let users = await getUser(getLocalUser.token);
   data = users.user;
 
-  table = document.querySelector(".tbody");
+  table = document.querySelector(".tableBody");
   table.innerHTML = renderTable(data, curPage, pageSize);
 
   // listen for sort clicks
@@ -30,6 +30,7 @@ if (localStorage.getItem("user") === null) {
       table.innerHTML = sort(data);
     });
   });
+
   //  nextPage
   document.querySelector("#nextButton").addEventListener("click", () => {
     table.innerHTML = nextPage(data);
@@ -40,4 +41,8 @@ if (localStorage.getItem("user") === null) {
     table.innerHTML = previousPage(data);
   });
 }
-// });
+
+// logout the admin
+logout();
+
+document.querySelector(".userAvatar").innerHTML = getUserStorage().user.email;

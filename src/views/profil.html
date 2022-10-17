@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/profil.css">
+  <link rel="stylesheet" href="../css/notification.css">
+  <link rel="stylesheet" href="../css/modal.css">
   <title>Profil page</title>
 </head>
 
@@ -27,6 +29,9 @@
 
   <h1>Tableau de bord</h1>
   <main>
+    <section class="quote-choise">
+      <!-- quote-choise -->
+    </section>
     <section class="dashboard">
       <div class="dashboard_case discord">
         <img class="logo" src="../assets/img/unknown.png" alt="logo discord">
@@ -46,14 +51,20 @@
         <a href="update.html">Modifier mes informations.</a>
       </div>
     </section>
-    <section class="table-word">
+    <div class="prompt">
+      <!-- Boîte de confirmation -->
+    </div>
+    <div class="tablePrompt">
+      <!-- Boîte de confirmation -->
+    </div>
+
+    <section class="table-quote">
       <h1>Section de phrase</h1>
       <table class="container">
         <thead>
           <tr>
             <th>
               <div class="h1">Phrases</div>
-
             </th>
             <th>
               <div class="h1">colors</div>
@@ -61,10 +72,17 @@
           </tr>
         </thead>
         <tbody class="tbody">
-
+          <tr>
+            <td colspan="6"><i>Loading...</i></td>
+          </tr>
         </tbody>
       </table>
+      <div class="fild-submit">
+        <button id="prevButton" class="btn">Previous</button>
+        <button id="nextButton" class="btn">Next</button>
+      </div>
     </section>
+
     <section class="dashboard">
       <!-- <div class="dashboard_case little_cases"> -->
       <div class="dashboard_case ext">
@@ -88,8 +106,9 @@
     </a>
   </footer>
 
-  <script type="module" src="../../app.js"></script>
+  <!-- </div> -->
   <script type="module" src="../js/profil.js"></script>
+  <script type="module" src="../js/modal.js"></script>
 </body>
 
 </html>

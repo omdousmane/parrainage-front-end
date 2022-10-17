@@ -1,5 +1,5 @@
-import { postUser, printHtml, checkForm } from "./function.js";
-import { getUserStorage, saveUserStorage, removeUser } from "./storage.js";
+import { postUser, checkForm } from "./function.js";
+import { getUserStorage, saveUserStorage } from "./storage.js";
 
 const formRegister = document.getElementById("formRegister");
 
@@ -35,14 +35,21 @@ if (formRegister) {
     };
 
     let content = await postUser(data);
-    console.log(content.user);
     if (content.user && content.user !== null) {
-      saveUserStorage(content.user);
+      saveUserStorage(content);
       window.location.href = "/src/views/profil.html";
     } else {
       let message = content.err;
-      printHtml(message, alert);
+
+      let html = `
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+          <strong>Erreur!</strong> ${message}.
+       `;
+      let parent = document.querySelector(".notification");
+      let alert = document.createElement("div");
+      alert.classList.add("alert");
+      alert.innerHTML = html;
+      parent.append(alert);
     }
-    console.log(content);
   });
 }

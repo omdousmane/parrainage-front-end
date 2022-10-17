@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/signin.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <title>sign in</title>
 </head>
 
@@ -17,7 +18,13 @@
     </header>
 
     <main>
-        <div class="alert"></div>
+        <div class="tablePrompt">
+            <!-- Boîte de confirmation -->
+        </div>
+        <div class="notification">
+            <!-- notification -->
+        </div>
+
     </main>
 
     <form id="form" enctype="multipart/form-data">
@@ -43,7 +50,6 @@
             <p>Vous n'avez pas encore de compte ? <a href="/index.html">S'enregistrer</a>.</p>
         </div>
     </form>
-    <script type="module" src="../../app.js"></script>
     <script type="module" src="../js/login.js"></script>
 </body>
 
