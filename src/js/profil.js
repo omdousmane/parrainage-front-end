@@ -115,13 +115,14 @@ if (localStorage.getItem("user") === null) {
     div.innerHTML = html;
     quoteSelected.appendChild(div);
   }
+
   // get data from database
   data = await getUser(getLocalUser.token);
   if (data.user && data.user !== null) {
     let users = data.user;
     const newDataUser = users.filter((user) => user.quote !== "");
     table = document.querySelector(".tbody");
-    table.innerHTML = renderQuote(newDataUser, curPage, pageSize);
+    table.innerHTML = renderQuote(newDataUser, curPage);
     selectQuote();
 
     // listen for sort clicks

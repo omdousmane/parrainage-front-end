@@ -196,40 +196,6 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-// render
-function render(data) {
-  const adminSession = getAdminStorage();
-  console.log(adminSession);
-  if (adminSession.sessionId && adminSession.sessionId !== null) {
-    return renderTable(data, curPage, pageSize);
-  } else {
-    return renderQuote(data, curPage);
-  }
-}
-
-// render tableHtml
-function renderTable(data, curPage, pageSize) {
-  // create html
-
-  let result = "";
-  data
-    .filter((row, index) => {
-      let start = (curPage - 1) * pageSize;
-      let end = curPage * pageSize;
-      if (index >= start && index < end) return true;
-    })
-    .forEach((c) => {
-      result += `<tr>
-     <td>${c.name}</td>
-     <td>${c.email}</td>
-     <td>${c.training}</td>
-     <td>${c.quote}</td>
-     <td>${c.createdAt}</td>
-     </tr>`;
-    });
-  return result;
-}
-
 function renderQuote(data, curPage) {
   let result = "";
   const colors = ["red", "green", "yellow", "blue", "purple", "orange", "pink"];
@@ -260,7 +226,7 @@ function sort(data) {
     if (a[sortCol] > b[sortCol]) return sortAsc ? -1 : 1;
     return 0;
   });
-  return render(data);
+  return renderQuote(data, curPage);
 }
 
 // select quote
@@ -315,15 +281,17 @@ async function confirmModal() {
 function previousPage(data) {
   if (curPage > 1) curPage--;
   console.log(curPage);
-  return render(data);
+  return renderQuote(data, curPage);
 }
 
 // nextPage
 function nextPage(data) {
   if (curPage * pageSize < data.length) curPage++;
   console.log(curPage);
-  return render(data);
+  return renderQuote(data, curPage);
 }
+
+function exportToExcel(type, fn, dl) {}
 
 // exports
 export {
@@ -333,7 +301,7 @@ export {
   postGodson,
   printAlert,
   checkForm,
-  renderTable,
+  exportToExcel,
   quoteModal,
   renderQuote,
   previousPage,

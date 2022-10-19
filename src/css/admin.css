@@ -1,14 +1,15 @@
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
+  width: calc(100% - 60px);
+  margin-inline: 30px auto;
+  border: 1px solid #04aa6d;
 }
 
 th,
 td {
   text-align: left;
-  padding: 16px;
+  padding: 20px;
 }
 thead tr {
   text-align: left;
@@ -25,10 +26,51 @@ th {
 
 td {
   cursor: pointer;
+  padding: 20px;
 }
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+/* Create a two-column layout */
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+#number,
+#godson {
+  display: flex;
+  flex-flow: column;
+  height: 200px;
+  background-color: #04aa6d;
+  color: #f2f2f2;
+  padding: 10px;
+}
+
+#number {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-family: Good_times;
+}
+
+span {
+  height: 200px;
+  font-size: 5rem;
+  background-color: #04aa6d;
+  color: #f2f2f2;
+}
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 /* Set a style for the submit button */
 .btn {
   font-size: 16px;
@@ -44,4 +86,36 @@ tr:nth-child(even) {
 
 .btn:hover {
   opacity: 1;
+}
+
+.card-container {
+  display: flex;
+  margin-left: -5px;
+  margin-right: -5px;
+  flex-flow: row wrap;
+  /*justify-content: space-between; */
+}
+
+.flex {
+  flex: 50%;
+  padding: 5px;
+}
+.card {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  /* align-items: center; */
+  width: calc(100% - 10px);
+}
+.card--card_case {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40vw;
+  margin: 10px;
+  height: auto;
+  border-radius: 5px;
+  margin-block: 30px;
+
+  /* border: 1px solid #000; */
 }
